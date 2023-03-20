@@ -8,6 +8,7 @@ tip_amount = tip_percent * bill
 
 cumulative_total_with_tip = bill + tip_amount
 
-total = round(cumulative_total_with_tip / split , 2)
+total = cumulative_total_with_tip / split
+total_rounded_2decimals = "{:.2f}".format(total)
 
-print(f"Each person should pay: ${total}")
+print(f"Each person should pay: ${total_rounded_2decimals}")
