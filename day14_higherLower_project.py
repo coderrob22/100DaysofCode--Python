@@ -48,6 +48,11 @@ while proceed:
 
     correct = check_answer(guess, pick1_followers, pick2_followers)
 
+    #Adding the clear method and logo so that both are shown/done each go around the while loop.
+    os.system('clear')
+    print(higher_lower_art.logo)
+
+    
     if correct:
         score += 1
         print(f"That was correct. Your score is {score}")
