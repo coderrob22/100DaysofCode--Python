@@ -15,4 +15,6 @@ import prettytable
 
 table = prettytable.PrettyTable()
 
+table.add_column("Pokemon_Name", ["Pikachu", "Squirtle", "Charmander"])
+
 print(table)
