@@ -6,7 +6,7 @@ user_1= User()  #this is how you creat a new object from that class. You initial
 #Using a constructor AKA Initializing
 
 class Using:
-    def __init__(self, user_id, user_name):
+    def __init__(self, user_id, user_name):  #This init function is the constructor!
         self.id = user_id
         self.name = user_name
 
