@@ -10,8 +10,16 @@ class Using:
         self.id = user_id
         self.name = user_name
         self.followers = 0   #This is how you give a default value to an attribute for every object.
-                            # There is no need to add it to the paramenter. It has a value already.
+        self.following = 0    # There is no need to add it to the paramenter. It has a value already.
+
+    def follow(self, user): #Always use the 'self' keyword when creating methods. Methods are funcs associated with objects.
+        user.followers += 1
+        self.following += 1
 
 another_one = Using('001', 'Sonic')
+user_2 = Using('002', 'China')
 
-print(another_one.name)
+user_2.follow(another_one)
+
+print(another_one.followers)
+print(another_one.following)
