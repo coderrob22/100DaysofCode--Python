@@ -9,4 +9,5 @@ for items in question_data:
     question_obj = Question(items['text'], items['answer'])
     question_bank.append(question_obj)
 
-QuizBrain(question_bank)
+quiz = QuizBrain(question_bank)
+quiz.next_question()
