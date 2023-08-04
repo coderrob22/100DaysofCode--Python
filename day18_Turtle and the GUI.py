@@ -9,10 +9,15 @@ tim = Turtle()
 
 #Draw a square
 
-for _ in range(4):
-    tim.forward(100)
-    tim.left(90)
+# for _ in range(4):
+#     tim.forward(100)
+#     tim.left(90)
 
+for _ in range(5):    
+    tim.forward(10)
+    tim.up()
+    tim.forward(10)
+    tim.down()
 
 
 screen = Screen()
