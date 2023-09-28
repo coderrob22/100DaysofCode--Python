@@ -20,6 +20,7 @@ tim = Turtle()
 #     tim.forward(10)
 #     tim.down()
 
+#You must update the color mode and bring in the 'colormode' object into the module to change colors.
 colormode(255)
 
 def color_turtle():
