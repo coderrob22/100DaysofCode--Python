@@ -1,4 +1,4 @@
-from turtle import Turtle, Screen
+from turtle import Turtle, Screen, colormode
 import random
 
 tim = Turtle()
@@ -20,14 +20,22 @@ tim = Turtle()
 #     tim.forward(10)
 #     tim.down()
 
-colors = ['Red', 'Blue', 'CornflowerBlue', 'Gold', 'DarkOrchid', 'Pink', 'Violet', 'SeaGreen', 'SlateGray', 'wheat']
+colormode(255)
+
+def color_turtle():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return (r,g,b)
+
+
 angle = [0, 90, 180, 270]
 
 tim.pensize(5)
 tim.speed(5)
 
 for _ in range(300):
-    tim.color(random.choice(colors))
+    tim.color(color_turtle())
     tim.forward(random.randint(1, 20))
     tim.setheading(random.choice(angle))
 
