@@ -18,6 +18,9 @@ def turn_clockwise():
 
 def clear_screen():
     tim.clear()
+    tim.penup()
+    tim.home()
+    tim.pendown()
 
 screen.listen()
 
