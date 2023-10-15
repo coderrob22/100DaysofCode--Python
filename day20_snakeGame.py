@@ -1,6 +1,7 @@
 from turtle import Screen
 import time
 from snake_game_snake import Snake
+from snake_game_food import Food
 
 screen = Screen()
 screen.setup(width=600, height=600)
@@ -10,7 +11,11 @@ screen.title('My Snake Game')
 # Turn off tracer to stop the un-snakelike movement
 screen.tracer(0)
 
+# ---------Import Snake class------------
 snake = Snake()
+
+# ---------Import Food for the snake------
+food = Food()
 
 # Create event listeners to listen to arrow input-- This is how we control the snake's movement
 screen.listen()
