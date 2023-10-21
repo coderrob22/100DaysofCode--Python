@@ -34,6 +34,7 @@ while game_is_on:
     # Logic to detect when the snake collides with the food
     if snake.head.distance(food) < 15:
         food.refresh_food()
+        snake.snake_extend()
         scoreboard.increase_score()
 
     # Logic to detect if the snake hits the wall
