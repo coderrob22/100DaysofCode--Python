@@ -2,6 +2,7 @@ from turtle import Screen
 from pong_paddle import Paddle
 from pong_ball import Ball
 import time
+from pong_scoreboard import Scoreboard
 
 screen = Screen()
 screen.setup(width=800, height=600)
@@ -18,6 +19,9 @@ left_paddle = Paddle((-350, 0))
 # Ball
 ball = Ball()
 
+# Score
+score = Scoreboard()
+
 
 screen.listen()
 screen.onkey(right_paddle.go_up, 'Up')
@@ -28,7 +32,7 @@ screen.onkey(left_paddle.go_down, 's')
 game_is_on = True
 
 while game_is_on:
-    time.sleep(.1)
+    time.sleep(ball.move_speed)
     screen.update()
     ball.move()
 
@@ -46,10 +50,11 @@ while game_is_on:
     # # If right paddle misses the ball
     if ball.xcor() > 390 :
         ball.ball_reset()
+        score.plus_left()
     
     # #If left paddle misses the ball
     if ball.xcor() < -390:
         ball.ball_reset()
+        score.plus_right()
 
-        
 screen.exitonclick()
