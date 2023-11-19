@@ -10,6 +10,7 @@ screen.tracer(0)
 
 # Call the classes
 player = Player()
+car_manager = Car_manager()
 
 
 # Event Listeners
@@ -23,3 +24,5 @@ while game_is_on:
     time.sleep(.1)
     screen.update()
 
+    car_manager.create_car()
+    car_manager.move_cars()
