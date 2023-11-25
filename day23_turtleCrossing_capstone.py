@@ -35,5 +35,6 @@ while game_is_on:
     # Detect when turtle crosses to the other side
     if player.arrived_at_finish_line():
         player.go_to_start()
+        car_manager.level_up()
 
 screen.exitonclick()
