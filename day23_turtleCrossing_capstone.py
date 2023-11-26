@@ -11,6 +11,7 @@ screen.tracer(0)
 # Call the classes
 player = Player()
 car_manager = Car_manager()
+scoreboard = Scoreboard()
 
 
 # Event Listeners
@@ -31,10 +32,12 @@ while game_is_on:
     for car in car_manager.all_cars:
         if car.distance(player) < 20:
             game_is_on = False
+            scoreboard.game_over()
 
     # Detect when turtle crosses to the other side
     if player.arrived_at_finish_line():
         player.go_to_start()
         car_manager.level_up()
+        scoreboard.level_up()
 
 screen.exitonclick()
