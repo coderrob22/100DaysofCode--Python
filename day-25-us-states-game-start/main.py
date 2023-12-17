@@ -25,6 +25,16 @@ while len(guessed_states) < 50 :
 
     guessed_states.append(player_answer)
 
+    if player_answer == 'Exit':
+        missing_states = []
+        all_states = data.state.to_list()
+        for state in all_states:
+            if state not in guessed_states:
+                missing_states.append(state)
+    # Write states that the player did not remember in a csv file for them to study.
+        pandas.DataFrame(missing_states).to_csv('States_to_learn.csv')
+        break
+
     if player_answer in data.state.to_list():
         t = turtle.Turtle()
         t.penup()
@@ -33,7 +43,8 @@ while len(guessed_states) < 50 :
         state_data = data[data.state == player_answer]
         t.goto(int(state_data.x), int(state_data.y))
         t.write(player_answer)
-        
+
+ 
 
 
 
