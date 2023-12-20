@@ -26,11 +26,11 @@ while len(guessed_states) < 50 :
     guessed_states.append(player_answer)
 
     if player_answer == 'Exit':
-        missing_states = []
         all_states = data.state.to_list()
-        for state in all_states:
-            if state not in guessed_states:
-                missing_states.append(state)
+        missing_states = [state for state in all_states if state not in guessed_states]
+        
+            
+                
     # Write states that the player did not remember in a csv file for them to study.
         pandas.DataFrame(missing_states).to_csv('States_to_learn.csv')
         break
