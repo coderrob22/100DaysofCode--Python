@@ -22,3 +22,17 @@ result = [int(x) for x in list_of_strings if int(x) % 2 == 0]
 
 # Write your code 👆 above:
 print(result)
+
+################################################################
+
+with open('file1.txt') as f1:
+  first_file = f1.readlines()
+
+with open('file2.txt') as f2:
+  second_file =f2.readlines()
+
+result = [int(x) for x in first_file if x in second_file]
+
+
+# Write your code above 👆
+print(result)
