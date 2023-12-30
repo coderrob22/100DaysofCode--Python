@@ -28,11 +28,18 @@
 import pandas
 
 data = pandas.read_csv('nato_phonetic_alphabet.csv')
-name = input('Enter a word or name: ').upper()
 
 first_dictionary = {row.letter :row.code for (index, row) in data.iterrows()}
-Nato = [first_dictionary[x] for x in name]
-print(Nato)
 
+def phonetic_function():
+    name = input('Enter a word or name: ').upper()
+    try:
+        Nato = [first_dictionary[x] for x in name]
+    except KeyError:
+        print("Please type only letters")
+        phonetic_function()
+    else:
+        print(Nato)
 
+phonetic_function()
 
