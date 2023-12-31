@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from random import shuffle, choice, randint
 import pyperclip
+import json
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_pw():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -23,19 +24,38 @@ def save():
     web_info = website_input.get()
     email_info = email_input.get()
     secret = password_input.get()
+
+    new_dictionary ={
+        web_info: {
+            "email": email_info,
+            "password": secret,
+        }
+    }
     
     if len(web_info)==0 or len(secret)==0 or len(email_info) == 0:
         messagebox.showerror(title='Uh-oh', message="Please don't leave any boxes empty!")
     else:
-        save_info = messagebox.askokcancel(title=web_info, message=f"These are the details you entered: \nEmail: {email_info}" f"\nPassword: {secret}")
+        # save_info = messagebox.askokcancel(title=web_info, message=f"These are the details you entered: \nEmail: {email_info}" f"\nPassword: {secret}")
 
-        if save_info:
-            with open("secret.txt", "a") as file:
-                file.write(f"{web_info} | {email_info} | {secret}\n")
+        # #if save_info:
+            # Read and update the json data
+            try:
+                with open("secret.json", "r") as file:
+                    data = json.load(file)
+            except FileNotFoundError:
+                with open("secret.json", "w") as file:
+                    json.dump(new_dictionary, file, indent=4)
+            
+            else:
+                data.update(new_dictionary)
+            ## file.write(f"{web_info} | {email_info} | {secret}\n")
 
-            website_input.delete(0, END)
-            # email_input.delete(0, END)
-            password_input.delete(0, END)
+                with open("secret.json", "w") as file:
+                    json.dump(data, file, indent=4)
+            finally:
+                website_input.delete(0, END)
+                # #email_input.delete(0, END)
+                password_input.delete(0, END)
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
