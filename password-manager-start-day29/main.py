@@ -20,6 +20,23 @@ def generate_pw():
     password_input.insert(0, new_pass)
     pyperclip.copy(new_pass)
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+def find_it():
+    site_name = website_input.get()
+
+    try:
+        with open("secret.json", "r") as file:
+            data = json.load(file)
+    except FileNotFoundError:
+        messagebox.showinfo(title='Error', message='No data found')
+
+    else:
+        if site_name in data:
+            email = data[site_name]['email']
+            password = data[site_name]['password']
+            messagebox.showinfo(title=site_name, message=f"Email: {email}\n Password:{password}")
+        else:
+            messagebox.showinfo(title='Website not found', message='There was no info for that website')
+
 def save():
     web_info = website_input.get()
     email_info = email_input.get()
@@ -76,8 +93,8 @@ email_label.grid(column=0, row=2)
 pw_label = Label(text='Password:')
 pw_label.grid(column=0, row=3)
 
-website_input = Entry(width=35)
-website_input.grid(column=1, row=1, columnspan=2)
+website_input = Entry(width=21)
+website_input.grid(column=1, row=1)
 website_input.focus()
 
 email_input = Entry(width=35)
@@ -89,6 +106,9 @@ password_input.grid(column=1, row=3)
 
 generate_password = Button(text='Generate Password', command=generate_pw)
 generate_password.grid(column=2, row=3)
+
+search_button = Button(text='Search', command=find_it, width= 12)
+search_button.grid(column=2, row=1)
 
 add_button= Button(text='Add', width=36, command=save)
 add_button.grid(column=1, row=4, columnspan=2)
